@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAppearance.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBounce.cs" />
+     <Compile Include="Assets\Scripts\Restart.cs" />
      <Compile Include="Assets\Scripts\TestCommit.cs" />
      <Compile Include="Assets\Scripts\functions\timer.cs" />
  <Reference Include="UnityEngine.UI">
