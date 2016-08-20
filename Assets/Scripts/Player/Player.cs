@@ -15,6 +15,14 @@ public class Player : MonoBehaviour
 	private Rigidbody m_rigidBody;
 	void Start () 
 	{
+		if (name == "Player01") {
+			transform.position = GameObject.Find ("Player01StartPos").transform.position;
+		}
+		else
+			if (name == "Player02") {
+				transform.position = GameObject.Find ("Player02StartPos").transform.position;
+			}
+
 		transform.localScale = new Vector3 (Size, Size, Size);	
 
 		m_rigidBody = GetComponent<Rigidbody> ();
