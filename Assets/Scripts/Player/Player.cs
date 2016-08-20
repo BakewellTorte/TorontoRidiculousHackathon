@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 	public float Size = 1;
 	public float MovementSpeedMultiplier = 1;
 
+	public float TimeBounce = 1;
+
 	public string HorizontalAxis = "Horizontal";
 	public string VerticalAxis = "Vertical";
 
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
 	
 	// Update is called once per frame
 	private float m_prevSize;
+	private Vector3 m_smoothDampVelocity;
 	void FixedUpdate () 
 	{
 		float horizontalInput = Input.GetAxis (HorizontalAxis);
@@ -32,11 +35,25 @@ public class Player : MonoBehaviour
 		}
 
 		//print (horizontalInput);
-		m_rigidBody.velocity = new Vector3 (MovementSpeedMultiplier * horizontalInput, 0, MovementSpeedMultiplier * verticalInput);
+		if (m_isBounce) 
+		{
+			m_isBounce = false;
+		} 
+		else 
+		{
+			if(m_bounce.magnitude != 0)
+				m_bounce = Vector3.SmoothDamp (m_bounce, Vector3.zero, ref m_smoothDampVelocity, TimeBounce);
+
+			m_rigidBody.velocity = new Vector3 (MovementSpeedMultiplier * horizontalInput, 0, MovementSpeedMultiplier * verticalInput);	
+		}
 	}
 
-	void OnTriggerEnter(Collider other)
+	bool m_isBounce = false;
+	private Vector3 m_bounce;
+	public void Bounce(Vector3 direction)
 	{
-		
+		m_isBounce = true;
+		m_bounce = direction;
+		//m_rigidBody.velocity += direction;
 	}
 }
