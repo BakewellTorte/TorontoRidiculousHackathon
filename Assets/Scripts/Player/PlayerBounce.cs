@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerBounce : MonoBehaviour 
 {
-	public float WallBounceIntensity = 2;
-	public float PlayerBounceIntensity = 50;
+	public float WallBounceIntensity = 30;
+	public float PlayerBounceIntensity = 20;
 	// Use this for initialization
 	Rigidbody m_rigidBody;
 	Player m_playerScript;
@@ -18,15 +18,16 @@ public class PlayerBounce : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Player") 
 		{
-			print ("In here");
-
 			Vector3 directionOfBounce = transform.position - new Vector3(collision.transform.position.x, 0, collision.transform.position.z);
-			//print (m_rigidBody.velocity);
-			m_playerScript.Bounce (PlayerBounceIntensity * directionOfBounce.normalized);
-			//m_rigidBody.velocity += PlayerBounceIntensity * directionOfBounce;
-			//print (m_rigidBody.velocity);
 
-			Debug.DrawRay (transform.position, directionOfBounce * 2, Color.red, 2);
+			m_playerScript.Bounce (PlayerBounceIntensity * directionOfBounce.normalized);
+		}
+		else
+		if (collision.gameObject.tag == "Wall") 
+		{
+			Vector3 directionOfBounce = collision.contacts[0].normal;
+
+			m_playerScript.Bounce (WallBounceIntensity * directionOfBounce.normalized);
 		}
 	}
 }
