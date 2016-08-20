@@ -36,7 +36,7 @@ public class timer : MonoBehaviour {
 
 			timeLeft -= 0.54500f;
 			//timerText.text = "Let the games begin "  + timeLeft.ToString ();
-			timerText.text = "Start " + string.Format("{0:.##}",timeLeft);
+			timerText.text = string.Format("{0:.##}",timeLeft);
 		}
 	}
 }

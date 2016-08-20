@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EndZoneContact : MonoBehaviour 
+public class EndZone : MonoBehaviour 
 {
 
 	// Use this for initialization
