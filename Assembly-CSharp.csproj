@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Arena\CreateArenaWalls.cs" />
+     <Compile Include="Assets\Scripts\EndZone.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAppearance.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBounce.cs" />
